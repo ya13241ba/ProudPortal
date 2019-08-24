@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>『ProudPortal』検索</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script><!-- UIkit CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <div id="app" class="main-container">
+        <h3>『ProudPortal』検索</h3>
+        <form>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            サイト
+                        </td>
+                        <td>：
+                            <input type="radio" v-model="in_site" value="melon">メロンブックス</input>
+                            <input type="radio" v-model="in_site" value="dlsite">DLSITE</input>
+                            <input type="radio" v-model="in_site" value="fanza">Fanza</input>
+                            <input type="radio" v-model="in_site" value="booth">BOOTH</input>
+                            <input type="radio" v-model="in_site" value="toranoana">とらのあな</input>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>
+                                ＩＤ
+                            </td>
+                            <td>：
+                                <input type="url" v-model="in_item_id"></input>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <div>
+                <button type="button" v-on:click="search_onclick">検索</button>
+            </div>
+        </form>
+        <table class="uk-table uk-table-divider">
+            <thead>
+                <tr>
+                    <th>サイト名</th>
+                    <th>ＩＤ</th>
+                    <th>タイトル</th>
+                    <th>発行者</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in items" v-bind:key="item.item_id">
+                    <td>{{ item.site }}</td>
+                    <td>{{ item.item_id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.publisher }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="search.js"></script>
+</body>
+</html>
